@@ -9,7 +9,7 @@ const upload = multer({
   dest: './uploads',
 });
 
-const PORT = '5000' || process.env.PORT;
+const PORT = '80' || process.env.PORT;
 
 app.post('/upload', upload.single('file'), (req, res) => {
   res.json({ file: req.file });
