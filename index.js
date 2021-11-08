@@ -1,20 +1,15 @@
-const express = require('express');
-const multer = require("multer");
-const cors = require("cors");
+##mainapp code
+const http = require('http');
 
-const app = express();
-app.use(cors());
+const hostname = '46.227.62.78';
+const port = 3000;
 
-const upload = multer({
-  dest: './uploads',
+const server = http.createServer((req, res) => {
+	res.statusCode = 200;
+  	res.setHeader('Content-Type', 'text/plain');
+  	res.end('This is the Main App!\n');
 });
 
-const PORT = '5000' || process.env.PORT;
-
-app.post('/upload', upload.single('file'), (req, res) => {
-  res.json({ file: req.file });
-  console.log('file uploaded');	
+server.listen(port, hostname, () => {
+  	console.log(`Server running at http://${hostname}:${port}/`);
 });
-
-app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
-
